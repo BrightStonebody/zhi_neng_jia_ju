@@ -8,8 +8,61 @@
 
 namespace app\index\controller;
 
+use think\Controller;
+use think\Exception;
 
-class Table
+class Table extends Controller
 {
+    const DATA_SIZE = 20;
+    public function get_data(){
+        $response = ['status' => 'ok'];
+        if (session('has_login') === null) {
+            $response['status'] = 'error, please login';
+            return json($response);
+        }
+        if (!(isset($_GET['type']))){
+            $response['status'] = 'error';
+            return json($response);
+        }
+        $type = $_GET['type'];
+        $huan_jing = model('huanjing');
+        try {
+            $info_list = $huan_jing->order('time', 'desc')
+                ->limit(self::DATA_SIZE)->column('time,' . $type);
+        }catch(Exception $e){
+            $response['status'] = 'error';
+            return json($response);
+        }
+        $response['info'] = $info_list;
+        return json($response);
+    }
 
+//    前端应该用不到，给硬件端用的
+    public function write_data()
+    {
+        $response = ['status' => 'ok'];
+        if (session('has_login') === null) {
+            $pass = false;
+            if (isset($_POST['account']) && isset($_POST['pwd'])) {
+                if ($_POST['pwd'] === config('pwd') &&
+                    $_POST['account'] === config('account')) {
+                    $pass = true;
+                }
+            }
+            if ($pass === false) {
+                $response['status'] = 'error, please login';
+                return json($response);
+            }
+        }
+        $huan_jing = model('huanjing');
+        $huan_jing->data($_POST);
+        try {
+            $huan_jing->allowField(true)->save(); // allowField函数过滤掉非数据表的字段
+            $response['status'] = 'ok';
+            return json($response);
+        }catch(Exception $e){
+            $response['status'] = 'error, sql error';
+            return json($response);
+        }
+    }
 }
