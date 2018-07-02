@@ -65,7 +65,7 @@ class Switches extends Controller
         }
         $switches_info = [];
         $command = model('command');
-        for($i = 0 ; $i <= self::PLACE_N; $i++){
+        for($i = 1 ; $i <= self::PLACE_N; $i++){
             $place_name = ''.$i;
             try {
                 $temp = $command->where('place', $place_name)
