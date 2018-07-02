@@ -15,6 +15,9 @@ return [
     // +----------------------------------------------------------------------
     'account'               => 'root',
     'pwd'                   => 'root',
+    //管理员登陆信息
+    'admin_account'          => 'root',
+    'admin_pwd'              => 'root',
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
