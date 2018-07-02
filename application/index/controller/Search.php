@@ -71,10 +71,10 @@ Class Search extends Controller
                 $placename = ''.$i;
                 try {
                     if(isset($type)) {
-                        $yingjian_info = $Yingjian->query('SELECT $type FROM yingjian WHERE place = $placename ORDER BY time desc LIMIT 10');
+                        $yingjian_info = $Yingjian->query('SELECT $type FROM yingjian WHERE place = $placename ORDER BY time desc LIMIT 20');
                     }
                     else{
-                        $yingjian_info = $Yingjian->query('SELECT * FROM yingjian WHERE place = $placename ORDER BY time desc LIMIT 10');
+                        $yingjian_info = $Yingjian->query('SELECT * FROM yingjian WHERE place = $placename ORDER BY time desc LIMIT 20');
                     }
                 } catch (Exception $e) {
                     $response = ['status' => 'error, sql error'];
