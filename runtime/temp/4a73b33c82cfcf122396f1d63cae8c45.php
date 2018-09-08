@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:88:"/home/chenlei/code/PHP/zhi_neng_jia_ju/public/../application/index/view/index/index.html";i:1535619273;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -8,15 +9,15 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="__CSS__/bootstrap-switch.min.css">
-    <link rel="stylesheet" href="__CSS__/style.css">
+    <link rel="stylesheet" href="/zhi_neng_jia_ju/public/static/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" href="/zhi_neng_jia_ju/public/static/css/style.css">
 
-    <script src="__STATIC__/vendor/jquery-3.3.1.min.js"></script>
-    <script src="__STATIC__/vendor/popper.min.js"></script>
-    <script src="__STATIC__/vendor/bootstrap.min.js"></script>
-    <script src="__STATIC__/vendor/bootstrap-switch.js"></script>
+    <script src="/zhi_neng_jia_ju/public/static/vendor/jquery-3.3.1.min.js"></script>
+    <script src="/zhi_neng_jia_ju/public/static/vendor/popper.min.js"></script>
+    <script src="/zhi_neng_jia_ju/public/static/vendor/bootstrap.min.js"></script>
+    <script src="/zhi_neng_jia_ju/public/static/vendor/bootstrap-switch.js"></script>
     <!-- 图表JS -->
-    <script type="text/javascript" src="__STATIC__/vendor/echarts.common.min.js"></script>
+    <script type="text/javascript" src="/zhi_neng_jia_ju/public/static/vendor/echarts.common.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         </div>
 
         <div class="btn_div row" id="submit-btn">
-            <input id="validate" type="hidden" name="__token__" value="{$Request.token}"/>
+            <input id="validate" type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>"/>
             <button class="btn btn-success btn-lg" id="btn_send">提交</button>
         </div>
     </div>
@@ -109,10 +110,10 @@
 <!--chart-->
 <script>
 
-    var ROOT_PATH = '__ROOT__';
+    var ROOT_PATH = '/zhi_neng_jia_ju/public';
 </script>
 
-<script src="__JS__/switch.js"></script>
-<script src="__JS__/chart.js"></script>
+<script src="/zhi_neng_jia_ju/public/static/js/switch.js"></script>
+<script src="/zhi_neng_jia_ju/public/static/js/chart.js"></script>
 
 </html>

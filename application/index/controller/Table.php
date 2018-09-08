@@ -13,7 +13,7 @@ use think\Exception;
 
 class Table extends Controller
 {
-    const DATA_SIZE = 20;
+    const DATA_SIZE = 200;
     public function get_data(){
         $response = ['status' => 'ok'];
         if (session('has_login') === null) {
@@ -29,11 +29,31 @@ class Table extends Controller
         try {
             $info_list = $huan_jing->order('time', 'desc')
                 ->limit(self::DATA_SIZE)->column('time,' . $type);
+            $info_list = array_reverse($info_list);
+            $response['x'] = array_keys($info_list);
+            $response['y'] = array_values($info_list);
         }catch(Exception $e){
             $response['status'] = 'error';
             return json($response);
         }
-        $response['info'] = $info_list;
+
+        return json($response);
+    }
+
+    public function get_current_data(){
+        $response = ['status' => 'ok'];
+        if (session('has_login') === null) {
+            $response['status'] = 'error, please login';
+            return json($response);
+        }
+
+        $huan_jing = model('huanjing');
+        try {
+            $info = $huan_jing->order('time', 'desc')->find();
+            $response['info'] = $info;
+        }catch(Exception $e){
+            $response['status'] = 'error';
+        }
         return json($response);
     }
 

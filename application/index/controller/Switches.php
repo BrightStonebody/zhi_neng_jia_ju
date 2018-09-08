@@ -11,6 +11,7 @@ namespace app\index\controller;
 
 use think\Controller;
 use think\Exception;
+use think\Validate;
 
 class Switches extends Controller
 {
@@ -38,6 +39,20 @@ class Switches extends Controller
             $response['status'] = 'error';
             return json($response);
         }
+
+        //验证器 验证
+        $validate = new Validate([
+            'dengguang' => 'require',
+            'chuanglian' => 'require',
+            'menjin' => 'require',
+            'place' => 'require|number|token'
+        ]);
+
+        if($validate->check($_POST) === false){
+            $response['status'] =  'error';
+            return json($response);
+        }
+
         $command = model('Command');
         $command->data([
             'command_dengguang' => $this->for_database($_POST['dengguang']),
@@ -50,12 +65,13 @@ class Switches extends Controller
             $command->save();
             return json($response);
         } catch (Exception $e) {
-            $response['status'] = 'database_error';
+            $response['status'] = 'error';
             return json($response);
         }
     }
 
     const PLACE_N = 3;
+
     public function read_switches()
     {
         $response = ['status' => 'ok'];
@@ -65,18 +81,18 @@ class Switches extends Controller
         }
         $switches_info = [];
         $command = model('command');
-        for($i = 0 ; $i <= self::PLACE_N; $i++){
-            $place_name = ''.$i;
+        for ($i = 0; $i <= self::PLACE_N; $i++) {
+            $place_name = '' . $i;
             try {
                 $temp = $command->where('place', $place_name)
                     ->order('time', 'desc')
                     ->limit(1)
                     ->find();
-            }catch(Exception $e){
+            } catch (Exception $e) {
                 $response['status'] = 'error, sql error';
                 return json($response);
             }
-            if($temp === null)
+            if ($temp === null)
                 continue;
             $switches_info[$place_name]['place'] = $temp['place'];
             $switches_info[$place_name]['time'] = $temp['time'];
