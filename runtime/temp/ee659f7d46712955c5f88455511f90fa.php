@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:88:"/home/chenlei/code/PHP/zhi_neng_jia_ju/public/../application/index/view/index/index.html";i:1535619274;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"/home/wwwroot/zhi_neng_jia_ju/public/../application/index/view/index/index.html";i:1535619274;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/zhi_neng_jia_ju/public/static/css/bootstrap-switch.min.css">
-    <link rel="stylesheet" href="/zhi_neng_jia_ju/public/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
-    <script src="/zhi_neng_jia_ju/public/static/vendor/jquery-3.3.1.min.js"></script>
-    <script src="/zhi_neng_jia_ju/public/static/vendor/popper.min.js"></script>
-    <script src="/zhi_neng_jia_ju/public/static/vendor/bootstrap.min.js"></script>
-    <script src="/zhi_neng_jia_ju/public/static/vendor/bootstrap-switch.js"></script>
+    <script src="/static/vendor/jquery-3.3.1.min.js"></script>
+    <script src="/static/vendor/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap.min.js"></script>
+    <script src="/static/vendor/bootstrap-switch.js"></script>
     <!-- 图表JS -->
-    <script type="text/javascript" src="/zhi_neng_jia_ju/public/static/vendor/echarts.common.min.js"></script>
+    <script type="text/javascript" src="/static/vendor/echarts.common.min.js"></script>
 </head>
 
 <body>
@@ -110,10 +110,10 @@
 <!--chart-->
 <script>
 
-    var ROOT_PATH = '/zhi_neng_jia_ju/public';
+    var ROOT_PATH = '';
 </script>
 
-<script src="/zhi_neng_jia_ju/public/static/js/switch.js"></script>
-<script src="/zhi_neng_jia_ju/public/static/js/chart.js"></script>
+<script src="/static/js/switch.js"></script>
+<script src="/static/js/chart.js"></script>
 
 </html>

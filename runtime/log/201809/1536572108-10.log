@@ -1,0 +1,33 @@
+---------------------------------------------------------------
+[ 2018-09-10T17:35:08+08:00 ] 123.151.43.110 GET /
+[ info ] 111.231.138.72/ [运行时间：0.074687s][吞吐率：13.39req/s] [内存消耗：1,640.69kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/zhi_neng_jia_ju/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'connection' => '',
+  'cookie' => 'zsd_http_boce',
+  'host' => '111.231.138.72',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ /home/wwwroot/zhi_neng_jia_ju/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File

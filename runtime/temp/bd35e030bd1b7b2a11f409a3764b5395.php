@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:88:"/home/chenlei/code/PHP/zhi_neng_jia_ju/public/../application/index/view/login/login.html";i:1535003658;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"/home/wwwroot/zhi_neng_jia_ju/public/../application/index/view/login/login.html";i:1535003658;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +166,7 @@
         }
 
     </style>
-    <script src="/zhi_neng_jia_ju/public/static/vendor/jquery-3.3.1.min.js"></script>
+    <script src="/static/vendor/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -180,7 +180,7 @@
     <button type="submit" class="btn btn-primary btn-block btn-large">登录</button>
 
 </div>
-/zhi_neng_jia_ju/public
+
 <script >
     $('button').click(function () {
         $.post('login',
@@ -190,7 +190,7 @@
                     alert('用户名或密码错误');
                 }
                 if(data['is_pass'] === true){
-                    window.location.href='/zhi_neng_jia_ju/public/index.php/index/index/index';
+                    window.location.href='/index.php/index/index/index';
                 }
             })
     });
