@@ -9,12 +9,48 @@
 namespace app\index\controller;
 
 
+use think\captcha\Captcha;
+use think\Config;
 use think\Controller;
 use think\Exception;
+use think\Request;
 use think\Validate;
 
 class Switches extends Controller
 {
+
+    public function verify_image()
+    {
+        $captcha = new Captcha(\config('captcha'));
+        return $captcha->entry();
+    }
+
+    private function machine_test()
+    {
+
+        $last_login = session('machine_test');
+        if ($last_login === null) {
+            session('machine_test', time() . " " . (string)1);
+            return false;
+        } else {
+            $last_login = explode(' ', $last_login);
+            $t = (int)$last_login[0];
+            $times = (int)$last_login[1];
+
+            $time_between = (time() - $t) / (60);
+            if ($time_between > 3) {
+                session('machine_test', time() . " " . (string)1);
+                return false;
+            } elseif ($times >= 3) {
+                return true;
+            }
+            else{
+                session('machine_test', time().' '.($times+1));
+            }
+        }
+
+    }
+
 //    与数据库 内数据形式保持一致
     private function for_database($n)
     {
@@ -40,18 +76,38 @@ class Switches extends Controller
             return json($response);
         }
 
+        //检验是否有可能是机器
+        if ($this->machine_test()) {
+            if(!isset($_POST['captcha'])){
+                $response['status'] = 'need_verify';
+                return json($response);
+            }
+            else{
+                if (!captcha_check($_POST['captcha'])) {
+                    $response['verify'] = false;
+////                    $url = "verify_image?tm=".rand();
+//                    $url = $this->request->domain()."".$this->request->root()."/index/switches/verify_image?tm=".rand();
+//                    $response['verify_image'] = base64_encode(file_get_contents($url));
+////                    $response['verify_image'] = base64_encode($this->verify_image());
+                    $response['status'] = 'error';
+                    return json($response);
+                }
+            }
+        }
+
         //验证器 验证
         $validate = new Validate([
             'dengguang' => 'require',
             'chuanglian' => 'require',
             'menjin' => 'require',
-            'place' => 'require|number|token'
+            'place' => 'require|number',
         ]);
 
-        if($validate->check($_POST) === false){
-            $response['status'] =  'error';
+        if ($validate->check($_POST) === false) {
+            $response['status'] = 'error' . $validate->getError();
             return json($response);
         }
+
 
         $command = model('Command');
         $command->data([

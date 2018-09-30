@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="__CSS__/bootstrap-switch.min.css">
-    <link rel="stylesheet" href="__CSS__/style.css">
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" href="__STATIC__/css/style.css">
 
     <script src="__STATIC__/vendor/jquery-3.3.1.min.js"></script>
     <script src="__STATIC__/vendor/popper.min.js"></script>
@@ -34,6 +34,9 @@
         </div>
 
         <div class="btn_div row" id="submit-btn">
+            <div id="verify-block">
+
+            </div>
             <input id="validate" type="hidden" name="__token__" value="{$Request.token}"/>
             <button class="btn btn-success btn-lg" id="btn_send">提交</button>
         </div>
@@ -109,10 +112,10 @@
 <!--chart-->
 <script>
 
-    var ROOT_PATH = '__ROOT__';
+    var ROOT_PATH = '__PUBLIC__';
 </script>
 
-<script src="__JS__/switch.js"></script>
-<script src="__JS__/chart.js"></script>
+<script src="__STATIC__/js/switch.js"></script>
+<script src="__STATIC__/js/chart.js"></script>
 
 </html>
